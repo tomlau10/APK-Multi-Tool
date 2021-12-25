@@ -383,7 +383,7 @@ IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
-DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
+DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
 cd ..
 :ins1
 ECHO Waiting for device
@@ -828,7 +828,7 @@ ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
-DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
+DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
 cd ..
 goto restart
 :stki
@@ -840,7 +840,7 @@ ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
-DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
+DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
 cd ..
 goto restart
 :ins
@@ -870,7 +870,7 @@ IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
-DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
+DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
 cd ..
 ECHO Waiting for device
 "%~dp0other\adb.exe" wait-for-device
