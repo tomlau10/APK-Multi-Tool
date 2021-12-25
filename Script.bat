@@ -522,7 +522,7 @@ PAUSE
 goto restart
 :zipa
 ECHO Zipaligning Apk
-IF EXIST "%~dp0place-apk-here-for-signing\signed%capp%" ("%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-signing\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%")
+IF EXIST "%~dp0place-apk-here-for-signing\signed%capp%" ("%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-signing\signed%capp%" "%~dp0place-apk-here-for-signing\signedaligned%capp%")
 
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" ("%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-signing\unsigned%capp%" "%~dp0place-apk-here-for-signing\unsignedaligned%capp%")
 
