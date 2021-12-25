@@ -5,7 +5,7 @@ if (%1)==(3) goto updater
 if (%1)==(4) goto next2
 COLOR 0A
 echo Signing "%~n1"
-java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 "../place-apk-here-for-signing/%~n1%~x1" "../place-apk-here-for-signing/signed.apk"
+java -Xmx%heapy%m -jar apksigner.jar sign --key testkey.pk8 --cert testkey.x509.pem --v4-signing-enabled false --in "../place-apk-here-for-signing/%~n1%~x1" --out "../place-apk-here-for-signing/signed.apk"
 del /S /Q "../place-apk-here-for-signing/%~n1%~x1" > nul
 ren "../place-apk-here-for-signing/signed.apk" "%~n1%~x1"
 goto quit

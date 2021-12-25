@@ -86,11 +86,11 @@ ECHO  ----------------------------------         -------------------------------
 ECHO  0    Adb pull                              9    Decompile apk                          16   Batch Theme Image Transfer
 ECHO  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 ECHO  2    Optimize images inside                     (For proprietary ROM apks)                    using this feature)
-ECHO  3    Zip apk                               11   Compile System APK files               17   Batch Decompile apk Files                  
-ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files           18   Batch Compile apk Files                          
+ECHO  3    Zip apk                               11   Compile System APK files               17   Batch Decompile apk Files
+ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files           18   Batch Compile apk Files
 ECHO       do this IF its a system apk)          13   Sign apk with Android Market 
 ECHO  5    Zipalign apk (Do once apk is               supported Key (Requires the JAVA 
-ECHO       created/signed)                            JDK to be installed)
+ECHO       created and before signed)                 JDK to be installed)
 ECHO  6    Install apk (Dont do this IF          14   Install apk
 ECHO       system apk, do adb push)              15   Compile apk / Sign apk / Install apk
 ECHO  7    Zip / Sign / Install apk                   (Non-System Apps Only)
@@ -378,7 +378,7 @@ cd ..
 :si1
 cd other
 ECHO Signing Apk
-java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
+java -Xmx%heapy%m -jar apksigner.jar sign --key testkey.pk8 --cert testkey.x509.pem --v4-signing-enabled false --in %~dp0place-apk-here-for-signing/unsigned%capp% --out %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
@@ -834,7 +834,7 @@ goto restart
 :stki
 cd other
 ECHO Signing Apk
-java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
+java -Xmx%heapy%m -jar apksigner.jar sign --key testkey.pk8 --cert testkey.x509.pem --v4-signing-enabled false --in %~dp0place-apk-here-for-signing/unsigned%capp% --out %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
@@ -865,7 +865,7 @@ PAUSE
 goto restart
 )
 ECHO Signing Apk
-java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
+java -Xmx%heapy%m -jar apksigner.jar sign --key testkey.pk8 --cert testkey.x509.pem --v4-signing-enabled false --in %~dp0place-apk-here-for-signing/unsigned%capp% --out %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
