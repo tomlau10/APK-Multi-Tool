@@ -530,10 +530,14 @@ IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
-DEL /Q "%~dp0place-apk-here-for-signing\signed%capp%"
-DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
-rename "%~dp0place-apk-here-for-signing\signedaligned%capp%" signed%capp%
-rename "%~dp0place-apk-here-for-signing\unsignedaligned%capp%" unsigned%capp%
+IF EXIST "%~dp0place-apk-here-for-signing\signed%capp%" (
+    DEL /Q "%~dp0place-apk-here-for-signing\signed%capp%"
+    rename "%~dp0place-apk-here-for-signing\signedaligned%capp%" signed%capp%
+)
+IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" (
+    DEL /Q "%~dp0place-apk-here-for-signing\unsigned%capp%"
+    rename "%~dp0place-apk-here-for-signing\unsignedaligned%capp%" unsigned%capp%
+)
 goto restart
 :ex
 cd other
